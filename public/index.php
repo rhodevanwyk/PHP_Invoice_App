@@ -5,8 +5,15 @@ declare(strict_types=1);
 require __DIR__ . '/../vendor/autoload.php';
 
 // LOAD ENVIROMENT
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
-$dotenv->load();
+// $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
+// $dotenv->load();
+
+if (class_exists('Dotenv\Dotenv')) {
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
+    $dotenv->safeLoad();
+} else {
+    echo 'ERROR: Dotenv class not found.<br>';
+}
 
 // LOAD APP CONFIGURATION
 $config = require __DIR__ . '/../config/app.php';

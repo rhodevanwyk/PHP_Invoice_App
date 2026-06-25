@@ -1,9 +1,9 @@
 <?php
 return [
     'app_env' => $_ENV['APP_ENV'] ?? 'development',
-    'app_url' => $_ENV['APP_URL'] ?? 'http://invoiceapp.test',
+    'app_url' => $_ENV['APP_URL'] ?? 'http://localhost:8000',
     'db' => [
-        'dsn' => $_ENV['DB_DSN'] ?? 'mysql:host=127.0.0.1;db=invoice_app_db;charset=utf8mb4',
+        'dsn' => $_ENV['DB_DSN'] ?? 'mysql:host=127.0.0.1;dbname=invoice_app_db;charset=utf8mb4',
         'user' => $_ENV['DB_USER'] ?? 'root',
         'pass' => $_ENV['DB_PASS'] ?? '',
     ],

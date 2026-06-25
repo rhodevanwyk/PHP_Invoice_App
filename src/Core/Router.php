@@ -9,7 +9,6 @@ class Router
 
     public function add(string $method, string $pattern, string $controller, string $action): void
     {
-        // CONVERT {PARAM TO NAMED REGEX GROUPS
         $regex = preg_replace('/\{([a-zA-Z_]+)\}/', '(?P<\1>[^/]+)', $pattern);
         $regex = '#^' . $regex . '$#';
         $this->routes[] = [
@@ -20,29 +19,31 @@ class Router
         ];
     }
 
-    public function dispatch(string $method, string $uri): void
+    public function dispatch(string $method, string $uri, array $services): void
     {
-        // STRIP QUERY STRING
         $uri = parse_url($uri, PHP_URL_PATH);
         $uri = rtrim($uri, '/') ?: '/';
+
+        if (defined('BASE_PATH') && strpos($uri, BASE_PATH) === 0) {
+            $uri = substr($uri, strlen(BASE_PATH));
+            $uri = $uri ?: '/';
+        }
 
         foreach ($this->routes as $route) {
             if ($route['method'] !== strtoupper($method)) {
                 continue;
             }
             if (preg_match($route['regex'], $uri, $matches)) {
-                // EXTRACT NAMED PARAMS ONLY
                 $params = array_filter($matches, 'is_string', ARRAY_FILTER_USE_KEY);
                 $controllerClass = $route['controller'];
                 $action = $route['action'];
-                $controller = new $controllerClass();
-                // INJECT DEPENDENCIES IF NEEDED LATER THO
+                $controller = new $controllerClass($services);
                 call_user_func_array([$controller, $action], $params);
                 return;
             }
         }
-        // ERROR 404
+
         http_response_code(404);
-        echo '404 Page Not Found';
+        echo '404 Not Found';
     }
 }

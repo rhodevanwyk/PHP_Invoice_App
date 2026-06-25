@@ -1,0 +1,5 @@
+vendor/
+.env
+storage/invoices/*
+storage/logs/*
+.DS_Store

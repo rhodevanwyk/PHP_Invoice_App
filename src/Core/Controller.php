@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace App\Core;
 
 abstract class Controller
@@ -24,6 +26,9 @@ abstract class Controller
 
     protected function redirect(string $url): void
     {
+        if ($url !== '' && $url[0] === '/') {
+            $url = url($url);
+        }
         header('Location: ' . $url);
         exit;
     }

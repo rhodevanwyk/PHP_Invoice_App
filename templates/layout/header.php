@@ -16,12 +16,13 @@ $userInitial = isset($user['name']) ? strtoupper(mb_substr($user['name'], 0, 1))
 </head>
 <body class="<?= $bodyClass ?>">
 <?php if ($layout === 'app'): ?>
-<div class="app-shell">
-    <aside class="sidebar">
+<div class="app-shell" id="app-shell">
+    <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
         <div class="sidebar__header">
             <a href="<?= url('/dashboard') ?>" class="logo">
                 <span class="logo__icon">
-                    <img src="../public/assets/images/logo.png">
+                    <img src="<?= url('/assets/images/logo.png') ?>" alt="INVOX">
                 </span>
             </a>
         </div>
@@ -51,7 +52,12 @@ $userInitial = isset($user['name']) ? strtoupper(mb_substr($user['name'], 0, 1))
     </aside>
     <div class="app-main">
         <header class="topbar">
-            <h1 class="topbar__title"><?= htmlspecialchars($title ?? 'Dashboard') ?></h1>
+            <div class="topbar__left">
+                <button type="button" class="sidebar-toggle btn btn--ghost btn--sm" id="sidebar-toggle" aria-expanded="true" aria-controls="sidebar" aria-label="Toggle navigation menu">
+                    <svg class="sidebar-toggle__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                </button>
+                <h1 class="topbar__title"><?= htmlspecialchars($title ?? 'Dashboard') ?></h1>
+            </div>
             <form method="POST" action="<?= url('/logout') ?>">
                 <button type="submit" class="btn btn--ghost btn--sm">Logout</button>
             </form>
@@ -64,7 +70,7 @@ $userInitial = isset($user['name']) ? strtoupper(mb_substr($user['name'], 0, 1))
             <div class="auth-card__brand">
                 <a href="<?= url('/') ?>" class="logo">
                     <span class="logo__icon">
-                        <img src="../public/assets/images/logo.png">
+                        <img src="<?= url('/assets/images/logo.png') ?>" alt="INVOX">
                     </span>
                 </a>
             </div>

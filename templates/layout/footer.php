@@ -3,6 +3,7 @@
         </main>
     </div>
 </div>
+<script src="<?= url('/assets/js/app.js') ?>"></script>
 <?php else: ?>
         </div>
     </main>

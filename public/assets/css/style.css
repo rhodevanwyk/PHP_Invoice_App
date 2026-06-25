@@ -1,5 +1,5 @@
 /* ==========================================================================
-   InvoiceHub Design System — Dark Mode
+   INVOX Design System — Dark Mode
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
@@ -211,17 +211,11 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  background: linear-gradient(135deg, var(--color-accent), #8b5cf6);
+  width: 13.25rem;
+  height: 4.25rem;
+  /* background: linear-gradient(135deg, var(--color-accent), #8b5cf6);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-glow);
-}
-
-.logo__icon svg {
-  width: 1.25rem;
-  height: 1.25rem;
-  color: white;
+  box-shadow: var(--shadow-glow); */
 }
 
 /* --------------------------------------------------------------------------
@@ -449,10 +443,8 @@ textarea {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-
-.auth-header {
-  padding: var(--space-6) var(--space-8);
+  min-height: 100dvh;
+  padding: var(--space-8) var(--space-4);
 }
 
 .auth-main {
@@ -460,7 +452,7 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-6) var(--space-4) var(--space-12);
+  width: 100%;
 }
 
 .auth-card {
@@ -468,9 +460,15 @@ textarea {
   max-width: var(--auth-card-width);
 }
 
+.auth-card__brand {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-8) var(--space-8) var(--space-16);
+}
+
 .auth-card__header {
   text-align: center;
-  margin-bottom: var(--space-8);
+  padding: 0 var(--space-8) var(--space-6);
 }
 
 .auth-card__header .text-heading {
@@ -478,7 +476,7 @@ textarea {
 }
 
 .auth-card__body {
-  padding: var(--space-8);
+  padding: 0 var(--space-8);
 }
 
 .auth-card__footer {
@@ -487,7 +485,8 @@ textarea {
   align-items: center;
   gap: var(--space-2);
   text-align: center;
-  padding: var(--space-5) var(--space-8) var(--space-8);
+  padding: var(--space-6) var(--space-8) var(--space-8);
+  margin-top: var(--space-6);
   border-top: 1px solid var(--color-border-subtle);
 }
 

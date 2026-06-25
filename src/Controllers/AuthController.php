@@ -176,7 +176,7 @@ class AuthController extends Controller
         $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
         $resetLink = $scheme . '://' . $host . url('/reset-password?token=' . urlencode($rawToken));
 
-        $subject = 'Reset Your InvoiceHub Password';
+        $subject = 'Reset Your INVOX Password';
         $body = "
             <h2>Password Reset Request</h2>
             <p>Click the link below to reset your password. This link is valid for 1 hour.</p>

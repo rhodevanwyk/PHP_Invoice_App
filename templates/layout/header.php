@@ -8,7 +8,8 @@ $userInitial = isset($user['name']) ? strtoupper(mb_substr($user['name'], 0, 1))
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($title ?? 'InvoiceHub') ?> — InvoiceHub</title>
+    <title><?= htmlspecialchars($title ?? 'INVOX') ?> - INVOX</title>
+    <link rel="icon" type="image/png" href="../public/assets/images/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="<?= url('/assets/css/style.css') ?>">
@@ -20,9 +21,8 @@ $userInitial = isset($user['name']) ? strtoupper(mb_substr($user['name'], 0, 1))
         <div class="sidebar__header">
             <a href="<?= url('/dashboard') ?>" class="logo">
                 <span class="logo__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    <img src="../public/assets/images/logo.png">
                 </span>
-                InvoiceHub
             </a>
         </div>
         <nav class="sidebar__nav">
@@ -59,14 +59,13 @@ $userInitial = isset($user['name']) ? strtoupper(mb_substr($user['name'], 0, 1))
         <main class="page-content">
 <?php else: ?>
 <div class="auth-shell">
-    <header class="auth-header">
-        <a href="<?= url('/') ?>" class="logo">
-            <span class="logo__icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-            </span>
-            InvoiceHub
-        </a>
-    </header>
     <main class="auth-main">
         <div class="auth-card card card--elevated">
+            <div class="auth-card__brand">
+                <a href="<?= url('/') ?>" class="logo">
+                    <span class="logo__icon">
+                        <img src="../public/assets/images/logo.png">
+                    </span>
+                </a>
+            </div>
 <?php endif; ?>

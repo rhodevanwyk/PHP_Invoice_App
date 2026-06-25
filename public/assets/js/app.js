@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    const storageKey = 'invox-sidebar-collapsed';
+    const storageKey = 'InVox-sidebar-collapsed';
     const mobileQuery = window.matchMedia('(max-width: 768px)');
 
     const isMobile = () => mobileQuery.matches;

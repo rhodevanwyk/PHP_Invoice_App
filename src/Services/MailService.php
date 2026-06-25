@@ -27,7 +27,7 @@ class MailService
             $mail->SMTPSecure = $this->config['encryption'];
             $mail->Port       = $this->config['port'];
 
-            $mail->setFrom($this->config['username'], 'INVOX');
+            $mail->setFrom($this->config['username'], 'InVox');
             $mail->addAddress($to);
 
             $mail->isHTML(true);

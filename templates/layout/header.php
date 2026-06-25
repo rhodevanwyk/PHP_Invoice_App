@@ -8,7 +8,7 @@ $userInitial = isset($user['name']) ? strtoupper(mb_substr($user['name'], 0, 1))
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($title ?? 'INVOX') ?> - INVOX</title>
+    <title><?= htmlspecialchars($title ?? 'InVox') ?> - InVox</title>
     <link rel="icon" type="image/png" href="../public/assets/images/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@ $userInitial = isset($user['name']) ? strtoupper(mb_substr($user['name'], 0, 1))
         <div class="sidebar__header">
             <a href="<?= url('/dashboard') ?>" class="logo">
                 <span class="logo__icon">
-                    <img src="<?= url('/assets/images/logo.png') ?>" alt="INVOX">
+                    <img src="<?= url('/assets/images/logo.png') ?>" alt="InVox">
                 </span>
             </a>
         </div>
@@ -70,7 +70,7 @@ $userInitial = isset($user['name']) ? strtoupper(mb_substr($user['name'], 0, 1))
             <div class="auth-card__brand">
                 <a href="<?= url('/') ?>" class="logo">
                     <span class="logo__icon">
-                        <img src="<?= url('/assets/images/logo.png') ?>" alt="INVOX">
+                        <img src="<?= url('/assets/images/logo.png') ?>" alt="InVox">
                     </span>
                 </a>
             </div>

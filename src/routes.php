@@ -10,3 +10,10 @@ $router->add('POST', '/forgot-password',   'App\Controllers\AuthController', 'se
 $router->add('GET',  '/reset-password',    'App\Controllers\AuthController', 'showResetForm');
 $router->add('POST', '/reset-password',    'App\Controllers\AuthController', 'resetPassword');
 $router->add('GET',  '/dashboard',         'App\Controllers\DashboardController', 'index');
+$router->add('GET',  '/clients',                   'App\Controllers\ClientController', 'index');
+$router->add('GET',  '/clients/create',            'App\Controllers\ClientController', 'showCreate');
+$router->add('POST', '/clients',                   'App\Controllers\ClientController', 'store');
+$router->add('GET',  '/clients/{id}/edit',         'App\Controllers\ClientController', 'showEdit');
+$router->add('POST', '/clients/{id}/update',       'App\Controllers\ClientController', 'update');
+$router->add('GET',  '/clients/{id}/delete',       'App\Controllers\ClientController', 'destroy');
+$router->add('POST', '/clients/{id}/delete',       'App\Controllers\ClientController', 'destroy');

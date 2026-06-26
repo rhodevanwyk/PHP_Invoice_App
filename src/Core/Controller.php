@@ -32,4 +32,20 @@ abstract class Controller
         header('Location: ' . $url);
         exit;
     }
+
+    protected function flash(string $type, string $message): void
+    {
+        $_SESSION['flash'] = ['type' => $type, 'message' => $message];
+    }
+
+    protected function pullFlash(): ?array
+    {
+        if (empty($_SESSION['flash'])) {
+            return null;
+        }
+
+        $flash = $_SESSION['flash'];
+        unset($_SESSION['flash']);
+        return $flash;
+    }
 }

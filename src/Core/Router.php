@@ -38,7 +38,12 @@ class Router
                 $controllerClass = $route['controller'];
                 $action = $route['action'];
                 $controller = new $controllerClass($services);
-                call_user_func_array([$controller, $action], $params);
+
+                if ($params !== []) {
+                    $controller->$action($params);
+                } else {
+                    $controller->$action();
+                }
                 return;
             }
         }

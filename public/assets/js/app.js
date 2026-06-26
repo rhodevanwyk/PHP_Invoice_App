@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const applyDesktopPreference = () => {
         if (isMobile()) {
             shell.classList.remove('sidebar-collapsed');
+            setExpanded(false);
             return;
         }
 

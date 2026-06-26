@@ -1,6 +1,5 @@
 <?php
 $title = 'Dashboard';
-$layout = 'app';
 require __DIR__ . '/layout/header.php';
 ?>
 <div class="page-header">
@@ -26,7 +25,7 @@ require __DIR__ . '/layout/header.php';
     </div>
     <div class="stat-card">
         <div class="stat-card__label">Clients</div>
-        <div class="stat-card__value">0</div>
+        <div class="stat-card__value"><?= (int) ($clientCount ?? 0) ?></div>
         <div class="stat-card__change">Active accounts</div>
     </div>
 </div>

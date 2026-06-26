@@ -14,17 +14,22 @@ class Client
         $this->db = $db;
     }
 
+    public function countForUser(int $userId): int
+    {
+        return (int) $this->db->query(
+            'SELECT COUNT(*) FROM clients WHERE user_id = :uid',
+            ['uid' => $userId]
+        )->fetchColumn();
+    }
+
     public function allForUser(int $userId, int $page = 1, int $perPage = 10): array
     {
         $offset = ($page - 1) * $perPage;
-        $total = $this->db->query(
-            'SELECT COUNT(*) FROM clients WHERE user_id = uid',
-            ['uid' => $userId]
-        )->fetchColumn();
+        $total = $this->countForUser($userId);
 
         $clients = $this->db->query(
-            'SELECT * FROM clients WHERE user_id = :uid ORDER BY name ASC LIMIT :limit OFFSET :offset',
-            ['uid' => $userId, 'limit' => $perPage, 'offset' => $offset]
+            'SELECT * FROM clients WHERE user_id = :uid ORDER BY name ASC LIMIT ' . (int) $perPage . ' OFFSET ' . (int) $offset,
+            ['uid' => $userId]
         )->fetchAll();
 
         return [
@@ -80,5 +85,13 @@ class Client
             'DELETE FROM clients WHERE id = :id AND user_id = :uid',
             ['id' => $id, 'uid' => $userId]
         );
+    }
+
+    public function hasInvoices(int $id, int $userId): bool
+    {
+        return (int) $this->db->query(
+            'SELECT COUNT(*) FROM invoices WHERE client_id = :id AND user_id = :uid',
+            ['id' => $id, 'uid' => $userId]
+        )->fetchColumn() > 0;
     }
 }

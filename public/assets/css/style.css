@@ -98,7 +98,7 @@
   --sidebar-width: 260px;
   --topbar-height: 4rem;
   --auth-card-width: 28rem;
-  --content-max-width: 72rem;
+  --content-max-width: 100%;
 }
 
 /* --------------------------------------------------------------------------
@@ -310,6 +310,13 @@ textarea {
   font-size: var(--font-size-xs);
 }
 
+.btn.is-disabled,
+.btn[aria-disabled="true"] {
+  opacity: 0.45;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 /* --------------------------------------------------------------------------
    Forms
    -------------------------------------------------------------------------- */
@@ -358,6 +365,12 @@ textarea {
   border-color: var(--color-accent);
   box-shadow: 0 0 0 3px var(--color-accent-muted);
   background: var(--color-bg-elevated);
+}
+
+.form-input--textarea {
+  min-height: 6rem;
+  resize: vertical;
+  line-height: var(--line-height-relaxed);
 }
 
 .form-checkbox {
@@ -774,6 +787,18 @@ textarea {
   color: var(--color-text-secondary);
 }
 
+.page-header--row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.page-header__action {
+  flex-shrink: 0;
+}
+
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
@@ -842,6 +867,99 @@ textarea {
 
 .panel__body {
   padding: var(--space-6);
+}
+
+.panel__body--flush {
+  padding: 0;
+}
+
+.panel--narrow {
+  max-width: 36rem;
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+  padding: var(--space-4) var(--space-6);
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.data-table th {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  background: var(--color-bg-elevated);
+}
+
+.data-table tbody tr:hover {
+  background: var(--color-bg-surface-hover);
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table__primary {
+  display: block;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.data-table__secondary {
+  display: block;
+  margin-top: var(--space-1);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 16rem;
+}
+
+.data-table__actions-col {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.table-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.pagination__info {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
 }
 
 .empty-state {
@@ -942,15 +1060,171 @@ textarea {
     padding: 0 var(--space-4);
   }
 
+  .topbar__title {
+    font-size: var(--font-size-base);
+  }
+
   .page-content {
     padding: var(--space-5);
+  }
+
+  .page-header--row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .page-header__action {
+    width: 100%;
+  }
+
+  .page-header__action.btn {
+    justify-content: center;
+  }
+
+  .panel__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-5);
+  }
+
+  .panel__body {
+    padding: var(--space-5);
+  }
+
+  .panel--narrow {
+    max-width: none;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 2.75rem;
+  }
+
+  .pagination {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-5);
+  }
+
+  .pagination .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 2.75rem;
+  }
+
+  .pagination__info {
+    text-align: center;
+    order: -1;
+  }
+
+  .data-table thead {
+    display: none;
+  }
+
+  .data-table,
+  .data-table tbody,
+  .data-table tr,
+  .data-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .data-table tr {
+    padding: var(--space-4) var(--space-5);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .data-table tr:last-child {
+    border-bottom: none;
+  }
+
+  .data-table td {
+    display: grid;
+    grid-template-columns: minmax(5rem, 6.5rem) 1fr;
+    gap: var(--space-3);
+    align-items: start;
+    padding: var(--space-2) 0;
+    border-bottom: none;
+    text-align: left;
+  }
+
+  .data-table td::before {
+    content: attr(data-label);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    padding-top: 0.125rem;
+  }
+
+  .data-table td[data-label="Actions"] {
+    grid-template-columns: 1fr;
+    padding-top: var(--space-3);
+    margin-top: var(--space-2);
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .data-table td[data-label="Actions"]::before {
+    margin-bottom: var(--space-1);
+  }
+
+  .data-table__secondary {
+    max-width: none;
+    white-space: normal;
+  }
+
+  .table-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .table-actions .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 2.75rem;
   }
 
   .auth-card__body {
     padding: var(--space-6);
   }
 
+  .auth-card__header,
+  .auth-card__footer {
+    padding-left: var(--space-6);
+    padding-right: var(--space-6);
+  }
+
   .stats-grid {
     grid-template-columns: 1fr;
+  }
+
+  .empty-state {
+    padding: var(--space-8) var(--space-5);
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-shell {
+    padding: var(--space-4) var(--space-3);
+  }
+
+  .auth-card__brand {
+    padding: var(--space-6) var(--space-5) var(--space-5);
+  }
+
+  .auth-card__body,
+  .auth-card__header,
+  .auth-card__footer {
+    padding-left: var(--space-5);
+    padding-right: var(--space-5);
   }
 }
